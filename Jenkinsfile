@@ -25,7 +25,7 @@ pipeline {
         stage('Docker Login'){
             
             steps {
-                       withCredentials([usernameColonPassword(credentialsId: 'Docker', variable: '')]){
+                       withCredentials([usernameColonPassword(credentialsId: 'Docker', variable: 'Dockerpwd')]){
                        sh "sudo docker login -u mrmeowboi -p ${Nandhaat25}"
                    }
             }                
