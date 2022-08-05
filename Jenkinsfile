@@ -38,7 +38,7 @@ pipeline {
         stage('Docker deploy'){
             steps {
                
-                sh 'sudo docker run -itd -p  8081:8080 mrmeowboi/anvbhaskar:${BUILD_NUMBER}'
+                sh 'sudo docker run -itd -p  8081:8080 mrmeowboi/docker_jenkins_springboot:${BUILD_NUMBER}'
             }
         }
         stage('Archving') { 
