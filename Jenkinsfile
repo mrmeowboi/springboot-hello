@@ -26,10 +26,8 @@ pipeline {
         stage('Docker Login'){
             
             steps {
-                {
                     sh "docker login -u nandhaleep@gmail.com -p ${Nandha@25}"
-                }
-            }                
+                  }                
         }
         stage('Docker Push'){
             steps {
