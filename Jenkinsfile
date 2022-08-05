@@ -1,6 +1,5 @@
 pipeline {
-    agent any 
-   
+    agent any    
     stages {
         stage('Compile and Clean') { 
             steps {
@@ -27,7 +26,7 @@ pipeline {
             
             steps {
                     sh "docker login -u nandhaleep@gmail.com -p ${Nandha@25}"
-                  }                
+            }                
         }
         stage('Docker Push'){
             steps {
