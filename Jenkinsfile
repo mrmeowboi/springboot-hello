@@ -19,7 +19,7 @@ pipeline {
             steps {
                 echo "Hello Java Express"
                 sh 'ls'
-                sh 'docker build -t  mrmeowboi/anvbhaskar:${BUILD_NUMBER} .'
+                sh ' sudo docker build -t  mrmeowboi/anvbhaskar:${BUILD_NUMBER} .'
             }
         }
         stage('Docker Login'){
