@@ -25,18 +25,18 @@ pipeline {
         stage('Docker Login'){
             
             steps {
-                    sh "docker login -u nandhaleep@gmail.com -p ${Nandha@25}"
+                    sh "sudo docker login -u nandhaleep@gmail.com -p ${Nandha@25}"
             }                
         }
         stage('Docker Push'){
             steps {
-                sh 'docker push anvbhaskar/docker_jenkins_springboot:${BUILD_NUMBER}'
+                sh 'sudo docker push anvbhaskar/docker_jenkins_springboot:${BUILD_NUMBER}'
             }
         }
         stage('Docker deploy'){
             steps {
                
-                sh 'docker run -itd -p  8081:8080 anvbhaskar/docker_jenkins_springboot:${BUILD_NUMBER}'
+                sh 'sudo docker run -itd -p  8081:8080 anvbhaskar/docker_jenkins_springboot:${BUILD_NUMBER}'
             }
         }
         stage('Archving') { 
