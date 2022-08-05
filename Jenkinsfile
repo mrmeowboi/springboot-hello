@@ -1,5 +1,9 @@
 pipeline {
-    agent any    
+    agent any 
+     tools {
+        maven "Maven 3.8.5"
+    
+    }
     stages {
         stage('Compile and Clean') { 
             steps {
@@ -19,26 +23,26 @@ pipeline {
             steps {
                 echo "Hello Java Express"
                 sh 'ls'
-                sh ' sudo docker build -t  mrmeowboi/docker_jenkins_springboot:${BUILD_NUMBER} .'
+                sh ' docker build -t  mrmeowboi/docker_jenkins_springboot:${BUILD_NUMBER} .'
             }
         }
         stage('Docker Login'){
             
             steps {
                        withCredentials([usernameColonPassword(credentialsId: 'Docker', variable: 'Dockerpwd')]){
-                       sh "sudo docker login -u mrmeowboi -p ${Nandhaat25}"
+                       sh "docker login -u mrmeowboi -p ${Nandhaat25}"
                    }
             }                
         }
         stage('Docker Push'){
             steps {
-                sh 'sudo docker push mrmeowboi/docker_jenkins_springboot:${BUILD_NUMBER}'
+                sh 'docker push mrmeowboi/docker_jenkins_springboot:${BUILD_NUMBER}'
             }
         }
         stage('Docker deploy'){
             steps {
                
-                sh 'sudo docker run -itd -p  8081:8080 mrmeowboi/docker_jenkins_springboot:${BUILD_NUMBER}'
+                sh 'docker run -itd -p  8081:8080 mrmeowboi/docker_jenkins_springboot:${BUILD_NUMBER}'
             }
         }
         stage('Archving') { 
