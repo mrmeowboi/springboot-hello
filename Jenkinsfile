@@ -19,7 +19,7 @@ pipeline {
             steps {
                 echo "Hello Java Express"
                 sh 'ls'
-                sh ' sudo docker build -t  mrmeowboi/anvbhaskar:${BUILD_NUMBER} .'
+                sh ' sudo docker build -t  mrmeowboi/docker_jenkins_springboot:${BUILD_NUMBER} .'
             }
         }
         stage('Docker Login'){
@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Docker Push'){
             steps {
-                sh 'sudo docker push mrmeowboi/anvbhaskar:${BUILD_NUMBER}'
+                sh 'sudo docker push mrmeowboi/docker_jenkins_springboot:${BUILD_NUMBER}'
             }
         }
         stage('Docker deploy'){
